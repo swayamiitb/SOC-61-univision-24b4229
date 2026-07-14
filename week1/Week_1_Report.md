@@ -44,3 +44,10 @@ I researched and structured the foundational logic of a visual AI system using b
 
 ### Challenges Faced:
 Honestly, shifting my brain from a normal top-to-bottom scripting mindset to an "event-driven" one was pretty tough at first. Also, figuring out how to stop the `while` loop from just running endlessly and crashing my terminal took some trial and error with state flags!
+
+## Resources & References
+_Resources I studied this week (paste your links):_
+
+- Finite State Machines (FSM) — <add link>
+- Event-driven architecture vs. continuous polling — <add link>
+- Python exception handling and `try/finally` — <add link>

@@ -42,3 +42,12 @@ I took the abstract block logic from last week and turned it into strict Python 
 
 ### Challenges Faced:
 At first, writing tests and isolating functions felt a bit tedious and redundant. But once I started trying to debug nested dictionaries (like lists of bounding boxes inside other lists), I instantly realized why strict typing and modularity are an absolute must.
+
+## Resources & References
+_Resources I studied this week (paste your links):_
+
+- Python `typing` module (type hints) — <add link>
+- Big-O / time complexity basics — <add link>
+- Lists vs. dictionaries (hashing) — <add link>
+- Unit testing & Test-Driven Development (TDD) — <add link>
+- List comprehensions — <add link>

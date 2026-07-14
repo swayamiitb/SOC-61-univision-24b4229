@@ -251,3 +251,28 @@ I built an async backend gateway that sits between the frontend and the AI core 
 
 ### Challenges Faced
 The gap between synchronous threading and async event loops took real effort to understand. Getting Pydantic to return clean 422 errors instead of crashing the server also took a good amount of documentation reading.
+
+---
+
+## Resources & References
+_Key resources and references I studied across Weeks 1-4 (paste your links):_
+
+**Week 1 — System architecture**
+- Finite State Machines (FSM) — <add link>
+- Event-driven architecture vs. polling — <add link>
+- Python `try/finally` exception safety — <add link>
+
+**Week 2 — Data engineering**
+- Python `typing` module — <add link>
+- Big-O / time complexity — <add link>
+- Unit testing & TDD — <add link>
+
+**Week 3 — React & Virtual DOM**
+- React fundamentals — <add link>
+- Virtual DOM & reconciliation — <add link>
+- `useEffect` cleanup / memory leaks — <add link>
+
+**Week 4 — APIs & contracts**
+- RESTful API principles — <add link>
+- FastAPI & Pydantic — <add link>
+- Python `async` / `asyncio` — <add link>

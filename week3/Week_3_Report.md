@@ -50,3 +50,11 @@ I sketched out the conceptual and functional state management for a real-time Re
 
 ### Challenges Faced:
 Wrapping my head around React's component lifecycle and the asynchronous nature of `useEffect` was definitely tricky. I also ran into an issue where my mock event stream caused memory leaks, which forced me to research how to properly unmount components and clear intervals.
+
+## Resources & References
+_Resources I studied this week (paste your links):_
+
+- React fundamentals — <add link>
+- The Virtual DOM & reconciliation — <add link>
+- `useState` / `useEffect` hooks — <add link>
+- Memory leaks & cleanup functions in React — <add link>

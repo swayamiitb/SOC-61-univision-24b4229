@@ -56,3 +56,11 @@ I dove straight into the core mathematical representation of images using OpenCV
 
 ### Challenges Faced:
 Realizing that a shape like `(576, 1024, 3)` means `(Height, Width, Channels)` rather than standard `(X, Y)` Cartesian coordinates messed me up at first. Also, figuring out how to normalize the matrix values without destroying the core data structure required some careful typecasting to floating points.
+
+## Resources & References
+_Resources I studied this week (paste your links):_
+
+- OpenCV documentation — <add link>
+- NumPy array basics — <add link>
+- Image channels & grayscale conversion — <add link>
+- Pixel normalization — <add link>

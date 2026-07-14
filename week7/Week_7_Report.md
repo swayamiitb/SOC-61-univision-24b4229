@@ -37,3 +37,10 @@ I built out a full image enhancement and preprocessing pipeline aimed at optimiz
 
 ### Challenges Faced:
 Tuning the hyper-parameters (like the kernel size for the blur matrix and the min/max cutoffs for edge detection) was a highly iterative and sometimes frustrating process. If I set the rules too strict, the car completely disappeared; if I set them too loose, the camera noise overwhelmed the edges!
+
+## Resources & References
+_Resources I studied this week (paste your links):_
+
+- Gaussian blur — <add link>
+- Image thresholding — <add link>
+- Canny edge detection — <add link>

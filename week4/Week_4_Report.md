@@ -45,3 +45,12 @@ I set up the backend API contracts using FastAPI to serve as the bridge between 
 
 ### Challenges Faced:
 Managing how data transitions back and forth between raw Python objects and web-friendly JSON formats was quite a headache at first. It took me a bit of reading to truly understand how Pydantic validation acts as a necessary security and stability layer for the backend.
+
+## Resources & References
+_Resources I studied this week (paste your links):_
+
+- RESTful API principles — <add link>
+- FastAPI documentation — <add link>
+- Pydantic validation — <add link>
+- Python `async` / `asyncio` — <add link>
+- OSI model (Application Layer / Layer 7) — <add link>

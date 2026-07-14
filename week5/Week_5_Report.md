@@ -49,3 +49,11 @@ I researched Directed Acyclic Graphs (DAGs) and how they power visual node-based
 
 ### Challenges Faced:
 Honestly, wrapping my head around recursion and graph traversal took a lot of mental effort. Trying to ensure my algorithm could correctly detect the difference between independent nodes and deep dependencies (and avoid endless loops) was a major hurdle this week.
+
+## Resources & References
+_Resources I studied this week (paste your links):_
+
+- Graph theory basics — <add link>
+- Directed Acyclic Graphs (DAGs) — <add link>
+- Topological sorting — <add link>
+- Depth-First Search (DFS) — <add link>

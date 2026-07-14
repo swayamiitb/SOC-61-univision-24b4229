@@ -309,3 +309,21 @@ I'm proud of how far this went. From a `while` loop I kept crashing in Week 1, t
 
 **— Swayam Lavangare (24B4229)**
 *Seasons of Code, Uni_Vision Concept Learning*
+
+---
+
+## Resources & References
+_Key resources and references I studied across all eight weeks (paste your links):_
+
+**Weeks 1-4 (Foundations & Communication)**
+- Finite State Machines / event-driven design — <add link>
+- Python typing, Big-O, TDD — <add link>
+- React, Virtual DOM, `useEffect` cleanup — <add link>
+- REST, FastAPI, Pydantic, `asyncio` — <add link>
+
+**Weeks 5-8 (Orchestration, Vision & Detection)**
+- Graph theory, DAGs, topological sort, DFS — <add link>
+- OpenCV & NumPy image arrays — <add link>
+- Grayscale, normalization, Gaussian blur — <add link>
+- Canny edge detection — <add link>
+- Object detection: IoU & Non-Maximum Suppression — <add link>

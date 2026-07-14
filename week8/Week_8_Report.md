@@ -54,3 +54,10 @@ I researched the hardcore mechanics of object detection post-processing. I manua
 
 ### Challenges Faced:
 Translating the geometry of overlapping rectangles (IoU) into raw Python code was definitely a mental workout. Also, making sure my NMS loop properly discarded the lower-confidence box without accidentally deleting distinct, neighboring objects took several painful debugging sessions!
+
+## Resources & References
+_Resources I studied this week (paste your links):_
+
+- Object detection overview — <add link>
+- Intersection over Union (IoU) — <add link>
+- Non-Maximum Suppression (NMS) — <add link>
