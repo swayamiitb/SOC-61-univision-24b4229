@@ -315,6 +315,7 @@ I'm proud of how far this went. From a `while` loop I kept crashing in Week 1, t
 ## Resources & References
 _Key resources and references I studied across all eight weeks (paste your links):_
 
+- Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 **Weeks 1-4 (Foundations & Communication)**
 - Finite State Machines / event-driven design — <add link>
 - Python typing, Big-O, TDD — <add link>

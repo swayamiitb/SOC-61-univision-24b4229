@@ -48,6 +48,7 @@ Honestly, shifting my brain from a normal top-to-bottom scripting mindset to an 
 ## Resources & References
 _Resources I studied this week (paste your links):_
 
+- Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 - Finite State Machines (FSM) — <add link>
 - Event-driven architecture vs. continuous polling — <add link>
 - Python exception handling and `try/finally` — <add link>

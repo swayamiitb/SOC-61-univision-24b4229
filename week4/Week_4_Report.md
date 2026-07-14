@@ -49,6 +49,7 @@ Managing how data transitions back and forth between raw Python objects and web-
 ## Resources & References
 _Resources I studied this week (paste your links):_
 
+- Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 - RESTful API principles — <add link>
 - FastAPI documentation — <add link>
 - Pydantic validation — <add link>

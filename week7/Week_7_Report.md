@@ -41,6 +41,7 @@ Tuning the hyper-parameters (like the kernel size for the blur matrix and the mi
 ## Resources & References
 _Resources I studied this week (paste your links):_
 
+- Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 - Gaussian blur — <add link>
 - Image thresholding — <add link>
 - Canny edge detection — <add link>

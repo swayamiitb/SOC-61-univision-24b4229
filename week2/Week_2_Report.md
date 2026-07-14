@@ -46,6 +46,7 @@ At first, writing tests and isolating functions felt a bit tedious and redundant
 ## Resources & References
 _Resources I studied this week (paste your links):_
 
+- Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 - Python `typing` module (type hints) — <add link>
 - Big-O / time complexity basics — <add link>
 - Lists vs. dictionaries (hashing) — <add link>

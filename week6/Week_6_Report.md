@@ -60,6 +60,7 @@ Realizing that a shape like `(576, 1024, 3)` means `(Height, Width, Channels)` r
 ## Resources & References
 _Resources I studied this week (paste your links):_
 
+- Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 - OpenCV documentation — <add link>
 - NumPy array basics — <add link>
 - Image channels & grayscale conversion — <add link>

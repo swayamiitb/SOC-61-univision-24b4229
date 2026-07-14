@@ -53,6 +53,7 @@ Honestly, wrapping my head around recursion and graph traversal took a lot of me
 ## Resources & References
 _Resources I studied this week (paste your links):_
 
+- Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 - Graph theory basics — <add link>
 - Directed Acyclic Graphs (DAGs) — <add link>
 - Topological sorting — <add link>

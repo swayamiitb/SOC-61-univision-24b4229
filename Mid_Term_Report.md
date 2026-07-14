@@ -257,6 +257,7 @@ The gap between synchronous threading and async event loops took real effort to 
 ## Resources & References
 _Key resources and references I studied across Weeks 1-4 (paste your links):_
 
+- Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 **Week 1 — System architecture**
 - Finite State Machines (FSM) — <add link>
 - Event-driven architecture vs. polling — <add link>

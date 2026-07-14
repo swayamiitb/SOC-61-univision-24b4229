@@ -54,6 +54,7 @@ Wrapping my head around React's component lifecycle and the asynchronous nature 
 ## Resources & References
 _Resources I studied this week (paste your links):_
 
+- Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 - React fundamentals — <add link>
 - The Virtual DOM & reconciliation — <add link>
 - `useState` / `useEffect` hooks — <add link>

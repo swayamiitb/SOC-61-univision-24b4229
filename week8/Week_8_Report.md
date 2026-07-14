@@ -58,6 +58,7 @@ Translating the geometry of overlapping rectangles (IoU) into raw Python code wa
 ## Resources & References
 _Resources I studied this week (paste your links):_
 
+- Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 - Object detection overview — <add link>
 - Intersection over Union (IoU) — <add link>
 - Non-Maximum Suppression (NMS) — <add link>
