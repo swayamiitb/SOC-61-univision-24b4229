@@ -1,0 +1,15 @@
+# VIGIL end-term reproduction dependencies (CPU).
+#
+# torch/torchvision: install the CPU build first from the PyTorch index, e.g.
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+# then install the rest:
+#   pip install -r requirements.txt
+
+ultralytics>=8.2          # YOLOv8 detector (S2 Detect stage)
+opencv-python-headless>=4.9
+fastapi>=0.111
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pyyaml>=6.0
+numpy>=1.26
+pytest>=8.2               # test suite (14 tests)

@@ -1,0 +1,357 @@
+{
+  "frames": 9,
+  "total_valid_detections": 26,
+  "avg_detections_per_frame": 2.89,
+  "max_risk": 0.927,
+  "events": [
+    {
+      "frame": 0,
+      "detections": [
+        {
+          "label": "bowl",
+          "confidence": 0.822,
+          "bbox": [
+            513.1,
+            27.1,
+            946.2,
+            270.6
+          ]
+        },
+        {
+          "label": "bowl",
+          "confidence": 0.629,
+          "bbox": [
+            0.0,
+            28.5,
+            656.9,
+            523.1
+          ]
+        },
+        {
+          "label": "broccoli",
+          "confidence": 0.609,
+          "bbox": [
+            386.8,
+            263.2,
+            848.0,
+            530.0
+          ]
+        },
+        {
+          "label": "bowl",
+          "confidence": 0.522,
+          "bbox": [
+            0.0,
+            213.1,
+            953.7,
+            530.6
+          ]
+        },
+        {
+          "label": "broccoli",
+          "confidence": 0.51,
+          "bbox": [
+            494.2,
+            461.3,
+            642.1,
+            539.1
+          ]
+        },
+        {
+          "label": "sandwich",
+          "confidence": 0.37,
+          "bbox": [
+            0.4,
+            124.6,
+            345.0,
+            338.1
+          ]
+        }
+      ],
+      "dropped": 0,
+      "risk": 0.911,
+      "risk_label": "heuristic",
+      "summary": "No reasoning backend configured; used heuristic risk.",
+      "reasoning_backend": "heuristic"
+    },
+    {
+      "frame": 1,
+      "detections": [
+        {
+          "label": "giraffe",
+          "confidence": 0.904,
+          "bbox": [
+            578.2,
+            80.3,
+            898.4,
+            453.2
+          ]
+        }
+      ],
+      "dropped": 0,
+      "risk": 0.552,
+      "risk_label": "heuristic",
+      "summary": "No reasoning backend configured; used heuristic risk.",
+      "reasoning_backend": "heuristic"
+    },
+    {
+      "frame": 2,
+      "detections": [
+        {
+          "label": "vase",
+          "confidence": 0.768,
+          "bbox": [
+            357.2,
+            192.4,
+            607.5,
+            442.8
+          ]
+        },
+        {
+          "label": "potted plant",
+          "confidence": 0.301,
+          "bbox": [
+            306.4,
+            41.6,
+            690.0,
+            445.2
+          ]
+        }
+      ],
+      "dropped": 0,
+      "risk": 0.584,
+      "risk_label": "heuristic",
+      "summary": "No reasoning backend configured; used heuristic risk.",
+      "reasoning_backend": "heuristic"
+    },
+    {
+      "frame": 3,
+      "detections": [
+        {
+          "label": "zebra",
+          "confidence": 0.943,
+          "bbox": [
+            0.7,
+            31.1,
+            666.8,
+            510.0
+          ]
+        }
+      ],
+      "dropped": 0,
+      "risk": 0.572,
+      "risk_label": "heuristic",
+      "summary": "No reasoning backend configured; used heuristic risk.",
+      "reasoning_backend": "heuristic"
+    },
+    {
+      "frame": 4,
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 0.749,
+          "bbox": [
+            351.7,
+            134.4,
+            956.2,
+            534.1
+          ]
+        },
+        {
+          "label": "umbrella",
+          "confidence": 0.733,
+          "bbox": [
+            0.0,
+            41.6,
+            852.7,
+            433.9
+          ]
+        },
+        {
+          "label": "book",
+          "confidence": 0.261,
+          "bbox": [
+            786.7,
+            263.3,
+            927.4,
+            389.9
+          ]
+        }
+      ],
+      "dropped": 0,
+      "risk": 0.674,
+      "risk_label": "heuristic",
+      "summary": "No reasoning backend configured; used heuristic risk.",
+      "reasoning_backend": "heuristic"
+    },
+    {
+      "frame": 5,
+      "detections": [],
+      "dropped": 0,
+      "risk": 0.0,
+      "risk_label": "heuristic",
+      "summary": "No reasoning backend configured; used heuristic risk.",
+      "reasoning_backend": "heuristic"
+    },
+    {
+      "frame": 6,
+      "detections": [
+        {
+          "label": "bird",
+          "confidence": 0.253,
+          "bbox": [
+            200.0,
+            259.7,
+            467.8,
+            437.9
+          ]
+        }
+      ],
+      "dropped": 0,
+      "risk": 0.227,
+      "risk_label": "heuristic",
+      "summary": "No reasoning backend configured; used heuristic risk.",
+      "reasoning_backend": "heuristic"
+    },
+    {
+      "frame": 7,
+      "detections": [
+        {
+          "label": "person",
+          "confidence": 0.384,
+          "bbox": [
+            399.3,
+            221.3,
+            469.1,
+            290.0
+          ]
+        },
+        {
+          "label": "cow",
+          "confidence": 0.334,
+          "bbox": [
+            347.7,
+            263.5,
+            550.1,
+            368.0
+          ]
+        }
+      ],
+      "dropped": 0,
+      "risk": 0.392,
+      "risk_label": "heuristic",
+      "summary": "No reasoning backend configured; used heuristic risk.",
+      "reasoning_backend": "heuristic"
+    },
+    {
+      "frame": 8,
+      "detections": [
+        {
+          "label": "car",
+          "confidence": 0.854,
+          "bbox": [
+            438.8,
+            357.5,
+            547.9,
+            408.6
+          ]
+        },
+        {
+          "label": "car",
+          "confidence": 0.803,
+          "bbox": [
+            160.9,
+            424.4,
+            342.4,
+            507.9
+          ]
+        },
+        {
+          "label": "car",
+          "confidence": 0.778,
+          "bbox": [
+            98.1,
+            476.9,
+            287.3,
+            539.2
+          ]
+        },
+        {
+          "label": "car",
+          "confidence": 0.72,
+          "bbox": [
+            417.5,
+            242.0,
+            458.9,
+            261.7
+          ]
+        },
+        {
+          "label": "car",
+          "confidence": 0.69,
+          "bbox": [
+            631.6,
+            454.7,
+            797.8,
+            525.4
+          ]
+        },
+        {
+          "label": "car",
+          "confidence": 0.649,
+          "bbox": [
+            688.3,
+            499.0,
+            829.7,
+            538.1
+          ]
+        },
+        {
+          "label": "car",
+          "confidence": 0.5,
+          "bbox": [
+            485.5,
+            235.6,
+            508.6,
+            257.3
+          ]
+        },
+        {
+          "label": "car",
+          "confidence": 0.482,
+          "bbox": [
+            612.1,
+            369.5,
+            738.0,
+            423.0
+          ]
+        },
+        {
+          "label": "car",
+          "confidence": 0.474,
+          "bbox": [
+            614.3,
+            424.1,
+            777.8,
+            489.7
+          ]
+        },
+        {
+          "label": "car",
+          "confidence": 0.402,
+          "bbox": [
+            618.0,
+            393.2,
+            744.3,
+            445.3
+          ]
+        }
+      ],
+      "dropped": 0,
+      "risk": 0.927,
+      "risk_label": "heuristic",
+      "summary": "No reasoning backend configured; used heuristic risk.",
+      "reasoning_backend": "heuristic"
+    }
+  ]
+}

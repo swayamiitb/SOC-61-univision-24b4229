@@ -1,0 +1,16 @@
+{
+  "model": "yolov8n",
+  "dataset": "coco8.yaml",
+  "map50_95": 0.6291,
+  "map50": 0.8875,
+  "map75": 0.6347,
+  "precision": 0.621,
+  "recall": 0.8333,
+  "speed_ms_per_image": {
+    "preprocess": 0.97,
+    "inference": 41.38,
+    "loss": 0.0,
+    "postprocess": 1.61
+  },
+  "eval_seconds": 1.8
+}
