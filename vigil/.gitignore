@@ -30,3 +30,6 @@ data/
 
 # datasets caches
 *.cache
+
+# stray auto-downloaded weights at repo root (use models/)
+/yolov8n.pt
