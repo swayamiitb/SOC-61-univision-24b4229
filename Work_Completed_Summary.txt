@@ -1,0 +1,23 @@
+Work Completed So Far (Weeks 1 - 4):
+
+During the first half of Seasons of Code, I focused on building the software engineering foundation that a real visual AI pipeline needs. Instead of treating AI as a finished tool, I built the systems underneath it: the ones that manage hardware state, keep data clean, and let the frontend and backend talk to each other safely.
+
+The main things I got done:
+
+1. System architecture: broke a monolithic processing loop down into an event-driven state machine, so the pipeline can't deadlock or exhaust resources when something goes wrong.
+
+2. Data engineering: wrote an O(n) filter for detection output and backed it with strict type hints and unit tests, so bad or malformed data fails loudly instead of corrupting things downstream.
+
+3. Real-time frontend: built a decoupled React dashboard that renders a fast, simulated stream from the model using the Virtual DOM, without lagging or leaking memory.
+
+4. API contracts: built a non-blocking async FastAPI gateway with Pydantic schema validation, so malformed inference payloads get rejected at the door before they reach the model.
+
+---
+
+Challenges / Blockers Faced:
+
+1. Getting used to async thinking. Moving from plain top-to-bottom scripting to event-driven code was a steep curve. Early on I created a browser memory leak because my data-stream interval kept compounding on every React re-render, which pushed me to actually learn component lifecycles and cleanup.
+
+2. Enforcing strict data contracts. Debugging nested, dynamically-typed dictionaries (my mock model output) was tedious. It took a lot of trial and error to get Pydantic validation and Python type aliases working so silent data errors surfaced immediately instead of much later.
+
+3. Preventing deadlocks. When I simulated hardware interrupts, keeping the state machine from locking up on a fake failure meant digging into state-resetting patterns and try/finally control flow.

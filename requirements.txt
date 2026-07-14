@@ -1,0 +1,10 @@
+# Python dependencies for the Uni_Vision code experiments
+# Install with:  pip install -r requirements.txt
+
+numpy>=1.26
+opencv-python>=4.9        # weeks 6-7: images as arrays, preprocessing, edges
+fastapi>=0.110           # week 4: inference gateway
+pydantic>=2.6            # week 4: schema validation
+uvicorn>=0.29            # week 4: ASGI server to run the API
+
+# The Week 3 dashboard is React (JSX) and is not a Python dependency.
