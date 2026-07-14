@@ -15,7 +15,7 @@ When I signed up for this project, I honestly thought I'd spend eight weeks "bui
 
 My mentor pushed me to understand everything *underneath* the AI first. How a computer manages its own state. How data stays clean while it moves through a pipeline. How a frontend actually talks to a backend. And finally, the thing I didn't see coming: that an image is just a wall of numbers you can push around. By the time I reached the actual "AI" part in the last couple of weeks, none of it felt like magic. It felt like ordinary engineering, and that change in how I see things is probably the biggest thing I'm walking away with.
 
-This report goes through all eight weeks in the order I actually lived them. I've tried to be honest about the parts that broke my brain and clear about the parts that finally clicked. It's less of a formal writeup and more the way I'd explain the project to a friend who asked what I did all summer.
+This report goes through all eight weeks in the order I actually lived them, and then the end-term project those weeks were preparing me for: **VIGIL**, the vision pipeline I cloned, extended with a real YOLO detector, and evaluated (Part 3). I've tried to be honest about the parts that broke my brain and clear about the parts that finally clicked. It's less of a formal writeup and more the way I'd explain the project to a friend who asked what I did all summer.
 
 ---
 
@@ -281,7 +281,42 @@ The tricky bit was making the NMS loop drop true duplicates without also deletin
 
 ---
 
-# Part 3: What I Actually Learned From SOC
+# Part 3: The End-Term Project — VIGIL
+
+Everything up to here was the pre-requisite. The actual end-term deliverable is **VIGIL** (Visual Intelligence Graph & Inference Layer), the block-graph vision platform our mentors gave us to clone, extend, and evaluate. The whole thing is in the [`vigil/`](vigil/) folder of this repo, and the moment I opened it I realised the eight weeks had been quietly preparing me for exactly this. VIGIL's pipeline is `capture → clean → detect → validate → reason → report`, which is almost one-to-one with what I'd been learning: the state-machine capture from Week 1, the preprocessing from Weeks 6–7, the graph/DAG structure from Week 5, the detection and IoU/NMS from Week 8, and the FastAPI layer from Week 4.
+
+## What the repo gave me, and what I had to build
+
+VIGIL shipped as a clean "concept reference" scaffold: the graph engine, the block abstractions, the API and the reasoning layer were all there, but the actual **detection core was stubbed out** (it accepted a detector but shipped none), and a couple of pieces were buggy. So my job was to turn a skeleton into something that genuinely runs and produces measurable results.
+
+What I did:
+
+- **Implemented the YOLOv8 detection core.** I wrote `engines/yolo_detector.py`, a real Ultralytics YOLOv8 detector wired into the existing `DetectBlock`, plus an `ImageCaptureBlock` that reads real pixels from image folders or video feeds instead of the stub. This is the "implementing YOLO is necessary" part of the brief.
+- **Fixed two real bugs** so the test suite actually passes (14/14): the block base class was silently dropping its config, and the reasoning fallback was building an event without a required field and crashing.
+- **Wired up and hardened the LLM reasoning core.** The pipeline sends each frame's detections to an LLM that returns a risk score and a plain-English summary. Getting this reliable took real debugging: I added JSON-mode output, a User-Agent header (the provider's CDN rejects the default Python one with a 403), retry-with-backoff for rate limits, and tolerant parsing for when a small model wraps its answer differently. That took LLM coverage from partial to all nine frames.
+
+## The numbers
+
+I evaluated the detector properly, on a labelled dataset, so the scores are real and not hand-waved:
+
+| Metric (YOLOv8n on labelled COCO8) | Score |
+|-----|-----|
+| mAP@0.50 | **0.888** |
+| mAP@0.50–0.95 | 0.629 |
+| Precision | 0.621 |
+| Recall | 0.833 |
+
+Then I ran the full pipeline over a nine-frame generated feed. All nine frames were reasoned by the LLM, and the nice part was watching it actually *understand* the scene: a giraffe or a zebra came back as "clear" with near-zero risk, while a person or a lot full of cars came back as "activity" with a higher score. That is the whole point of VIGIL, a pipeline of small inspectable decisions rather than one opaque model, and seeing it work end-to-end on my own machine was the real payoff of the summer.
+
+The full scores, methodology, datasets and reproduction steps live in [`vigil/README.md`](vigil/README.md).
+
+## What it needs to go further
+
+The one piece I left for later is a full **freellmapi swarm** (a stack of free LLM keys for quota-free throughput). Because the client is OpenAI-compatible, that is a drop-in: point the base URL at the swarm instead of a single provider and nothing else changes. For the results above I used a single free key, which was enough to prove the whole pipeline works.
+
+---
+
+# Part 4: What I Actually Learned From SOC
 
 Eight weeks in, here's what genuinely changed. Not the polished resume version, the real one.
 
