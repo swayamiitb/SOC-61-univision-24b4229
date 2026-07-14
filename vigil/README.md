@@ -57,15 +57,25 @@ frames and `feed.mp4`) via `tools/run_feed.py`:
 | Frames processed | 9 |
 | Valid detections | 26 |
 | Avg detections / frame | 2.89 |
-| Max risk score | 0.927 |
+| Reasoning backend | **freellmapi / LLM (9/9 frames)** |
 | Classes detected | car (10), bowl (3), broccoli (2), person (2), + 9 others |
 
+The reasoning core (below) is **live** — every frame's detections are adjudicated
+by a real LLM, which correctly separates harmless scenes ("clear") from ones with
+people or vehicles ("activity"). Example per-frame outputs:
+
+| Frame | Detections | Risk | LLM summary |
+|-------|-----------|------|-------------|
+| person + umbrella | person 0.75 | **0.75** | "A person has been detected in the monitored area with high confidence." |
+| parking lot | 10× car | 0.20 | "Multiple vehicle detections with moderate confidence levels were observed." |
+| zebra | zebra 0.94 | 0.00 | "No threat detected, only a zebra is present in the monitored area." |
+
 Annotated outputs (boxes + per-frame risk banner) are in `results/annotated/`;
-per-frame events with detections and risk scores are in `results/events.json`.
+full per-frame events are in `results/events.json`.
 
-![Sample annotated frame](results/annotated/frame_008.jpg)
+![Sample annotated frame](results/annotated/frame_004.jpg)
 
-*YOLOv8 detecting vehicles on a CCTV parking-lot frame, scored `risk=0.93`.*
+*YOLOv8 detections + live LLM risk reasoning: `risk=0.75 [activity]`.*
 
 ### 3. What I changed (testing + architecture revamps)
 
@@ -77,8 +87,14 @@ per-frame events with detections and risk scores are in `results/events.json`.
     lost their config; now accepts both `config=` and keyword args.
   - `Adjudicator` heuristic fallback built a `RiskEvent` without the required
     `frame_index` → `TypeError`; now supplied.
+- **Wired up the LLM reasoning core** and hardened `agent/freellmapi_client.py`
+  for real-world providers: JSON response-format mode, a `User-Agent` header
+  (Groq/Cloudflare rejects the default `Python-urllib` UA with 403), retry with
+  exponential backoff on rate limits, and tolerant JSON parsing (unwraps nested
+  replies) — taking LLM-reasoned coverage from partial to **9/9 frames**.
 - **Added eval tooling** — `tools/evaluate.py` (metrics) and `tools/run_feed.py`
-  (full pipeline over a feed), plus `requirements.txt`.
+  (full pipeline over a feed, auto-selects LLM vs heuristic from env), plus
+  `requirements.txt`.
 
 ### 4. Datasets attached (per submission brief)
 
@@ -95,20 +111,26 @@ python tools/evaluate.py        # -> results/metrics.json
 python tools/run_feed.py        # -> results/events.json + results/annotated/
 ```
 
-### 6. Reasoning core (freellmapi) — note
+### 6. Reasoning core — LLM (active)
 
-The pipeline runs with the built-in **heuristic risk fallback**, so it produces
-scores with no keys. To enable the LLM reasoning core, add a **freellmapi swarm**
-(multiple free keys for quota-free throughput) to `.env`:
+The reasoning core is **wired and running**. Because the client is
+OpenAI-compatible, it points at any such endpoint via `.env` (gitignored):
 
 ```env
-FREELLMAPI_BASE_URL=http://localhost:8080
-FREELLMAPI_API_KEY=your-key-or-swarm-token
-FREELLMAPI_MODEL=auto
+# Path A — direct to a free provider (used for the results above):
+FREELLMAPI_BASE_URL=https://api.groq.com/openai
+FREELLMAPI_API_KEY=<your free Groq key>
+FREELLMAPI_MODEL=llama-3.3-70b-versatile
+
+# Path B — a local freellmapi swarm (multiple free keys, quota-free) is a
+# drop-in: just change the base URL + unified key:
+# FREELLMAPI_BASE_URL=http://localhost:3001
+# FREELLMAPI_API_KEY=freellmapi-<unified-key>
+# FREELLMAPI_MODEL=auto
 ```
 
-With those set, `agent/freellmapi_client.py` replaces the heuristic with real
-LLM adjudication; without them it degrades gracefully (never hard-fails).
+If no key is set, the pipeline degrades gracefully to a heuristic risk score
+and never hard-fails.
 
 ---
 

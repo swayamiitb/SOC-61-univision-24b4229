@@ -2,7 +2,7 @@
   "frames": 9,
   "total_valid_detections": 26,
   "avg_detections_per_frame": 2.89,
-  "max_risk": 0.927,
+  "max_risk": 0.75,
   "events": [
     {
       "frame": 0,
@@ -69,10 +69,10 @@
         }
       ],
       "dropped": 0,
-      "risk": 0.911,
-      "risk_label": "heuristic",
-      "summary": "No reasoning backend configured; used heuristic risk.",
-      "reasoning_backend": "heuristic"
+      "risk": 0.2,
+      "risk_label": "clear",
+      "summary": "No suspicious activity detected in the monitored feed.",
+      "reasoning_backend": "freellmapi"
     },
     {
       "frame": 1,
@@ -89,10 +89,10 @@
         }
       ],
       "dropped": 0,
-      "risk": 0.552,
-      "risk_label": "heuristic",
-      "summary": "No reasoning backend configured; used heuristic risk.",
-      "reasoning_backend": "heuristic"
+      "risk": 0.0,
+      "risk_label": "clear",
+      "summary": "A giraffe has been detected in the monitored area with high confidence.",
+      "reasoning_backend": "freellmapi"
     },
     {
       "frame": 2,
@@ -119,10 +119,10 @@
         }
       ],
       "dropped": 0,
-      "risk": 0.584,
-      "risk_label": "heuristic",
-      "summary": "No reasoning backend configured; used heuristic risk.",
-      "reasoning_backend": "heuristic"
+      "risk": 0.08,
+      "risk_label": "clear",
+      "summary": "No threatening objects were detected in the monitored area.",
+      "reasoning_backend": "freellmapi"
     },
     {
       "frame": 3,
@@ -139,10 +139,10 @@
         }
       ],
       "dropped": 0,
-      "risk": 0.572,
-      "risk_label": "heuristic",
-      "summary": "No reasoning backend configured; used heuristic risk.",
-      "reasoning_backend": "heuristic"
+      "risk": 0.0,
+      "risk_label": "clear",
+      "summary": "No threat detected, only a zebra is present in the monitored area.",
+      "reasoning_backend": "freellmapi"
     },
     {
       "frame": 4,
@@ -179,19 +179,19 @@
         }
       ],
       "dropped": 0,
-      "risk": 0.674,
-      "risk_label": "heuristic",
-      "summary": "No reasoning backend configured; used heuristic risk.",
-      "reasoning_backend": "heuristic"
+      "risk": 0.75,
+      "risk_label": "activity",
+      "summary": "A person has been detected in the monitored area with high confidence.",
+      "reasoning_backend": "freellmapi"
     },
     {
       "frame": 5,
       "detections": [],
       "dropped": 0,
       "risk": 0.0,
-      "risk_label": "heuristic",
-      "summary": "No reasoning backend configured; used heuristic risk.",
-      "reasoning_backend": "heuristic"
+      "risk_label": "clear",
+      "summary": "No threats detected in the monitored feed.",
+      "reasoning_backend": "freellmapi"
     },
     {
       "frame": 6,
@@ -208,10 +208,10 @@
         }
       ],
       "dropped": 0,
-      "risk": 0.227,
-      "risk_label": "heuristic",
-      "summary": "No reasoning backend configured; used heuristic risk.",
-      "reasoning_backend": "heuristic"
+      "risk": 0.05,
+      "risk_label": "clear",
+      "summary": "A bird was detected in the monitored area with low confidence.",
+      "reasoning_backend": "freellmapi"
     },
     {
       "frame": 7,
@@ -238,10 +238,10 @@
         }
       ],
       "dropped": 0,
-      "risk": 0.392,
-      "risk_label": "heuristic",
-      "summary": "No reasoning backend configured; used heuristic risk.",
-      "reasoning_backend": "heuristic"
+      "risk": 0.38,
+      "risk_label": "activity",
+      "summary": "A person has been detected in the monitored area with moderate confidence.",
+      "reasoning_backend": "freellmapi"
     },
     {
       "frame": 8,
@@ -348,10 +348,10 @@
         }
       ],
       "dropped": 0,
-      "risk": 0.927,
-      "risk_label": "heuristic",
-      "summary": "No reasoning backend configured; used heuristic risk.",
-      "reasoning_backend": "heuristic"
+      "risk": 0.2,
+      "risk_label": "activity",
+      "summary": "Multiple vehicle detections with moderate confidence levels were observed in the monitored area.",
+      "reasoning_backend": "freellmapi"
     }
   ]
 }

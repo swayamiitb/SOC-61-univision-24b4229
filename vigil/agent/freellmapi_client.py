@@ -16,6 +16,8 @@ from __future__ import annotations
 import json
 import logging
 import os
+import time
+import urllib.error
 import urllib.request
 from dataclasses import dataclass
 
@@ -23,6 +25,42 @@ from agent.provider import heuristic_risk
 from engines.types import RiskEvent, ValidatedDetections
 
 logger = logging.getLogger("vigil.agent.freellmapi")
+
+
+def _extract_json(content: str) -> dict:
+    """Parse a JSON object out of an LLM reply.
+
+    Handles clean JSON, ```json fenced blocks, and JSON embedded in prose by
+    falling back to the first balanced ``{...}`` span. Raises ValueError if no
+    object can be recovered so the caller degrades to the heuristic fallback.
+    """
+    try:
+        return json.loads(content)
+    except (ValueError, TypeError):
+        pass
+    start, depth = content.find("{"), 0
+    if start != -1:
+        for i in range(start, len(content)):
+            depth += 1 if content[i] == "{" else -1 if content[i] == "}" else 0
+            if depth == 0:
+                return json.loads(content[start : i + 1])
+    raise ValueError("no JSON object found in LLM reply")
+
+
+def _coerce_fields(data: dict) -> dict:
+    """Return the dict holding risk/label/summary, unwrapping one nesting level.
+
+    Small models sometimes wrap the answer, e.g. {"analysis": {"risk": ...}};
+    this digs one level deep so those replies still parse.
+    """
+    if any(k in data for k in ("risk", "label", "summary")):
+        return data
+    for value in data.values():
+        if isinstance(value, dict) and any(
+            k in value for k in ("risk", "label", "summary")
+        ):
+            return value
+    return data
 
 
 @dataclass
@@ -68,17 +106,15 @@ class FreeLlmApiProvider:
     def _build_prompt(
         self, detections: ValidatedDetections, context: dict
     ) -> str:
-        items = [
-            {"label": d.label, "confidence": d.confidence, "bbox": list(d.bbox)}
-            for d in detections.items
-        ]
+        items = [[d.label, round(d.confidence, 2)] for d in detections.items]
         scene = context.get("scene", "a monitored camera feed")
         return (
-            "You are a security vision analyst. Given detections from "
-            f"{scene}, return STRICT JSON with keys "
-            '"risk" (0..1 float), "label" (short string), "summary" '
-            "(one sentence). Detections: "
-            + json.dumps(items)
+            f"You are a security vision analyst reviewing object detections from {scene}. "
+            "Respond with ONE flat JSON object containing EXACTLY these three keys and "
+            'nothing else: "risk" (a number between 0 and 1), "label" (a short threat '
+            'category, e.g. "clear", "activity", "intrusion"), and "summary" (one plain '
+            "sentence). Do not nest objects, do not add other keys, do not echo coordinates. "
+            "Detections as [label, confidence]: " + json.dumps(items)
         )
 
     def _chat(self, prompt: str) -> dict:
@@ -88,14 +124,29 @@ class FreeLlmApiProvider:
                 "model": self.config.model,
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": 0.2,
+                # ask OpenAI-compatible backends (Groq, etc.) for strict JSON
+                "response_format": {"type": "json_object"},
             }
         ).encode()
-        headers = {"Content-Type": "application/json"}
+        # A non-default User-Agent is required: some provider CDNs (e.g. Groq
+        # behind Cloudflare) reject the stock "Python-urllib" UA with HTTP 403.
+        headers = {"Content-Type": "application/json", "User-Agent": "vigil-freellmapi/0.1"}
         if self.config.api_key:
             headers["Authorization"] = f"Bearer {self.config.api_key}"
         req = urllib.request.Request(url, data=body, headers=headers)
-        with urllib.request.urlopen(req, timeout=self.config.timeout) as resp:
-            return json.loads(resp.read().decode())
+        # Retry with exponential backoff on transient errors (rate limits / 5xx),
+        # which are common on free-tier gateways under bursty load.
+        last_exc: Exception | None = None
+        for attempt in range(4):
+            try:
+                with urllib.request.urlopen(req, timeout=self.config.timeout) as resp:
+                    return json.loads(resp.read().decode())
+            except urllib.error.HTTPError as exc:
+                last_exc = exc
+                if exc.code not in (429, 500, 502, 503, 504):
+                    raise
+                time.sleep(2.0 * (attempt + 1))
+        raise last_exc if last_exc else RuntimeError("chat failed")
 
     def _parse(
         self,
@@ -105,12 +156,17 @@ class FreeLlmApiProvider:
     ) -> RiskEvent:
         try:
             content = payload["choices"][0]["message"]["content"]
-            data = json.loads(content)
+            data = _coerce_fields(_extract_json(content))
+            try:
+                risk = max(0.0, min(1.0, float(data.get("risk"))))
+            except (TypeError, ValueError):
+                risk = fallback.risk  # model omitted/garbled risk; keep heuristic value
+            # A valid LLM reply was received and used, even if a field was missing.
             return RiskEvent(
                 frame_index=detections.frame_index,
-                risk=float(max(0.0, min(1.0, data["risk"]))),
-                label=str(data.get("label", fallback.label)),
-                summary=str(data.get("summary", fallback.summary)),
+                risk=risk,
+                label=str(data.get("label") or fallback.label),
+                summary=str(data.get("summary") or fallback.summary),
                 detections=detections.items,
                 meta={"provider": "freellmapi", "model": self.config.model},
             )

@@ -13,7 +13,7 @@ Every week has a short report explaining what I studied and a small piece of run
 The eight weeks were the pre-requisites. The **end-term deliverable lives in [`vigil/`](vigil/)**: a clone of the mentor's [VIGIL](https://github.com/shubro18202758/vigil) block-graph vision platform, with the **YOLOv8 detection core implemented and wired in**, two scaffold bugs fixed (test suite now **14/14**), the full pipeline run over a generated feed, and the detector evaluated on a labeled dataset.
 
 **Evaluation — YOLOv8n on labeled COCO8:** mAP@50 **0.888** · mAP@50-95 **0.629** · precision 0.621 · recall 0.833.
-**Pipeline on a 9-frame generated feed:** 26 detections, max risk 0.927, annotated outputs in `vigil/results/`.
+**Pipeline on a 9-frame generated feed:** 26 detections + **live LLM risk reasoning on all 9 frames** (via an OpenAI-compatible free endpoint), annotated outputs in `vigil/results/`.
 
 See **[`vigil/README.md`](vigil/README.md)** for the full scores, methodology, datasets, and reproduction steps.
 

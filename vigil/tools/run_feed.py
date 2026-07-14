@@ -22,6 +22,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import cv2
 
 from agent.adjudicator import Adjudicator
+from agent.freellmapi_client import FreeLlmApiProvider
 from core.graph import build
 from core.graph.executor import Executor
 from engines.yolo_detector import YoloDetector
@@ -29,6 +30,24 @@ import engines.blocks  # noqa: F401  (registers clean/detect/validate)
 import engines.yolo_detector  # noqa: F401  (registers image_capture)
 
 FEED = sys.argv[1] if len(sys.argv) > 1 else "datasets/generated_feed/frames"
+
+
+def _load_dotenv(path: str = ".env") -> None:
+    """Minimal .env loader so `python tools/run_feed.py` picks up FREELLMAPI_*."""
+    if not os.path.exists(path):
+        return
+    for line in open(path):
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            k, _, v = line.partition("=")
+            os.environ.setdefault(k.strip(), v.strip())
+
+
+def _build_adjudicator() -> Adjudicator:
+    """Use the freellmapi/LLM reasoning core if configured, else heuristic."""
+    if os.getenv("FREELLMAPI_BASE_URL"):
+        return Adjudicator(provider=FreeLlmApiProvider())
+    return Adjudicator(provider=None)
 
 
 def build_pipeline(detector: YoloDetector):
@@ -49,17 +68,24 @@ def build_pipeline(detector: YoloDetector):
 
 
 def main() -> None:
+    _load_dotenv()
     n_frames = len([f for f in os.listdir(FEED) if f.endswith((".jpg", ".png"))])
     detector = YoloDetector(weights="yolov8n.pt", conf=0.25)
     graph = build_pipeline(detector)
     executor = Executor(graph)
-    adjudicator = Adjudicator(provider=None)  # heuristic reasoning without keys
+    adjudicator = _build_adjudicator()  # LLM reasoning if FREELLMAPI_* set, else heuristic
+    backend = "heuristic" if adjudicator._provider is None else "freellmapi/LLM"
+    print(f"reasoning backend: {backend}")
 
     os.makedirs("results/annotated", exist_ok=True)
     events = []
     total_dets = 0
 
+    import time
+
     for i in range(n_frames):
+        if i:
+            time.sleep(1.5)  # pace calls to stay under free-tier rate limits
         results = executor.run()
         frame = results["cap"].outputs["frame"]
         validated = results["validate"].outputs["detections"]
