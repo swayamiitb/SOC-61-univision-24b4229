@@ -255,25 +255,25 @@ The gap between synchronous threading and async event loops took real effort to 
 ---
 
 ## Resources & References
-_Key resources and references I studied across Weeks 1-4 (paste your links):_
+_Key resources and references I studied across Weeks 1-4:_
 
 - Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 **Week 1 — System architecture**
-- Finite State Machines (FSM) — <add link>
-- Event-driven architecture vs. polling — <add link>
-- Python `try/finally` exception safety — <add link>
+- Finite State Machines (FSM) — https://en.wikipedia.org/wiki/Finite-state_machine
+- Event-driven architecture vs. polling — https://en.wikipedia.org/wiki/Event-driven_programming
+- Python `try/finally` exception safety — https://docs.python.org/3/tutorial/errors.html
 
 **Week 2 — Data engineering**
-- Python `typing` module — <add link>
-- Big-O / time complexity — <add link>
-- Unit testing & TDD — <add link>
+- Python `typing` module — https://docs.python.org/3/library/typing.html
+- Big-O / time complexity — https://wiki.python.org/moin/TimeComplexity
+- Unit testing & TDD — https://docs.python.org/3/library/unittest.html
 
 **Week 3 — React & Virtual DOM**
-- React fundamentals — <add link>
-- Virtual DOM & reconciliation — <add link>
-- `useEffect` cleanup / memory leaks — <add link>
+- React fundamentals — https://react.dev/learn
+- Virtual DOM & reconciliation — https://legacy.reactjs.org/docs/reconciliation.html
+- `useEffect` cleanup / memory leaks — https://react.dev/learn/synchronizing-with-effects
 
 **Week 4 — APIs & contracts**
-- RESTful API principles — <add link>
-- FastAPI & Pydantic — <add link>
-- Python `async` / `asyncio` — <add link>
+- RESTful API principles — https://developer.mozilla.org/en-US/docs/Glossary/REST
+- FastAPI & Pydantic — https://fastapi.tiangolo.com/
+- Python `async` / `asyncio` — https://docs.python.org/3/library/asyncio.html

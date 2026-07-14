@@ -313,18 +313,18 @@ I'm proud of how far this went. From a `while` loop I kept crashing in Week 1, t
 ---
 
 ## Resources & References
-_Key resources and references I studied across all eight weeks (paste your links):_
+_Key resources and references I studied across all eight weeks:_
 
 - Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
 **Weeks 1-4 (Foundations & Communication)**
-- Finite State Machines / event-driven design — <add link>
-- Python typing, Big-O, TDD — <add link>
-- React, Virtual DOM, `useEffect` cleanup — <add link>
-- REST, FastAPI, Pydantic, `asyncio` — <add link>
+- Finite State Machines / event-driven design — https://en.wikipedia.org/wiki/Finite-state_machine
+- Python typing, Big-O, TDD — https://docs.python.org/3/library/typing.html
+- React, Virtual DOM, `useEffect` cleanup — https://react.dev/learn
+- REST, FastAPI, Pydantic, `asyncio` — https://fastapi.tiangolo.com/
 
 **Weeks 5-8 (Orchestration, Vision & Detection)**
-- Graph theory, DAGs, topological sort, DFS — <add link>
-- OpenCV & NumPy image arrays — <add link>
-- Grayscale, normalization, Gaussian blur — <add link>
-- Canny edge detection — <add link>
-- Object detection: IoU & Non-Maximum Suppression — <add link>
+- Graph theory, DAGs, topological sort, DFS — https://en.wikipedia.org/wiki/Topological_sorting
+- OpenCV & NumPy image arrays — https://docs.opencv.org/4.x/d3/df2/tutorial_py_basic_ops.html
+- Grayscale, normalization, Gaussian blur — https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html
+- Canny edge detection — https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html
+- Object detection: IoU & Non-Maximum Suppression — https://pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/

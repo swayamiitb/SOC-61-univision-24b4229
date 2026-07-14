@@ -58,10 +58,10 @@ I dove straight into the core mathematical representation of images using OpenCV
 Realizing that a shape like `(576, 1024, 3)` means `(Height, Width, Channels)` rather than standard `(X, Y)` Cartesian coordinates messed me up at first. Also, figuring out how to normalize the matrix values without destroying the core data structure required some careful typecasting to floating points.
 
 ## Resources & References
-_Resources I studied this week (paste your links):_
+_Resources I studied this week:_
 
 - Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
-- OpenCV documentation — <add link>
-- NumPy array basics — <add link>
-- Image channels & grayscale conversion — <add link>
-- Pixel normalization — <add link>
+- OpenCV documentation — https://docs.opencv.org/4.x/
+- NumPy array basics — https://numpy.org/doc/stable/user/absolute_beginners.html
+- Image channels & grayscale conversion — https://docs.opencv.org/4.x/df/d9d/tutorial_py_colorspaces.html
+- Pixel normalization — https://docs.opencv.org/4.x/d3/df2/tutorial_py_basic_ops.html

@@ -39,9 +39,9 @@ I built out a full image enhancement and preprocessing pipeline aimed at optimiz
 Tuning the hyper-parameters (like the kernel size for the blur matrix and the min/max cutoffs for edge detection) was a highly iterative and sometimes frustrating process. If I set the rules too strict, the car completely disappeared; if I set them too loose, the camera noise overwhelmed the edges!
 
 ## Resources & References
-_Resources I studied this week (paste your links):_
+_Resources I studied this week:_
 
 - Mentor-provided Learning Guide (course pre-requisites) — https://drive.google.com/drive/folders/1VkYekjzXxBUrnl4HM-fY1HPNAzlIviwn
-- Gaussian blur — <add link>
-- Image thresholding — <add link>
-- Canny edge detection — <add link>
+- Gaussian blur — https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html
+- Image thresholding — https://docs.opencv.org/4.x/d7/d4d/tutorial_py_thresholding.html
+- Canny edge detection — https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html
